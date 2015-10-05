@@ -1,0 +1,13 @@
+RewriteEngine on
+Options FollowSymLinks
+
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} ^/(css|img|js)/ [NC]
+RewriteCond %{DOCUMENT_ROOT}/Astralis/resources%{REQUEST_URI} -f
+RewriteRule ^(.+)$ Astralis/resources/$1 [L,QSA]
+
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
